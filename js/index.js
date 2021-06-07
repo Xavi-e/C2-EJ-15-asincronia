@@ -15,4 +15,17 @@ const vaciarPersonajes = () => {
     lista.remove();
 }
 
+bttnCargarPersonajes.addEventListener("click", async() => {
+    const personajes = await getPersonajes();
+    crearPersonajes(personajes);
+});
+
+bttnMatarFamilia.addEventListener("click", async() => {
+    try {
+        const muertos = await mataPersonajes(familia.value);
+        crearPersonajes(muertos);
+    } catch (error) {
+        mensajeError.textContent = error.message;
+});
+
 
